@@ -21,11 +21,12 @@ adminRoute.post('/login',(req,res)=>{
     let {email,password}:{email:String,password:String}=req.body;
 
     if (email==adminUseremail && password==adminPassword){
-        console.log("Login Successfull");
+        res.send("Login Successfull");
+        
 
     }else{
 
-        console.log("Access Denied!! Try again with valid credentials");
+        res.send("Access Denied!! Try again with valid credentials");
     }
 
 

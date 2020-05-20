@@ -8,6 +8,9 @@ import { json } from 'body-parser';
 
 
 route.get('/Allheroes',async (req,res)=>{
+
+    
+
     try{
 res.json(await everything.findAllData(0))
     }

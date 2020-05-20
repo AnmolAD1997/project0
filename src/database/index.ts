@@ -2,6 +2,7 @@ import {pool} from './connection';
 import {Hero} from '../model/hero';
 import {convertToHeroArray} from '../dto/heroesDTO';
 import { User } from '../model/user';
+import bcrypt from 'bcryptjs';
 
 
 export async function findAllData(a:Number):Promise<Hero[]>{
@@ -42,7 +43,7 @@ export async function findDataByHero(url:any):Promise<Hero[]>{
         const results = await client.query(`select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_super_name ~*'${url}';`);
         console.log(url);
        let result=results.rows.map(convertToHeroArray);
-       console.log(url);2
+       console.log(url);
        return result;
     
 
@@ -111,17 +112,16 @@ export async function CheckUser(user:String,password:String){
 
     let client;
 
-    console.log(user+"  "+password);
-
     try{
         client = pool.connect();
-        const result= (await client).query(`SELECT firstname,lastname,email FROM users WHERE PASSWORD='${password}' AND email~*'${user}';`);
+        const result= (await client).query(`SELECT firstname,lastname,email,password FROM users WHERE  email~*'${user}';`);
         let a=(await result).rows;
-    
-            return a;
 
-        }
-             
+
+    
+        return a
+        
+    }   
     catch(err){
 
         console.log(err);
