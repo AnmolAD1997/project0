@@ -145,7 +145,7 @@ export async function findImageById(url:any):Promise<Hero[]>{
     try{
         client = await pool.connect();
         
-        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100' hero_id="+url );
+        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100' AND hero_id="+url);
         
        let result=results.rows.map(convertToHeroArray);
        

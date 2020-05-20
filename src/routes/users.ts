@@ -70,7 +70,7 @@ res.send("Invalid email. Sorry!!");
                 let accessedToken:any=process.env.SECRET_TOKEN;
                 //creating token for successful login
                 const token= jwt.sign({email:user[0].email},accessedToken);
-                res.header('token',token).send(token);
+                res.header('token',token).send("Login Successful!! Your access token is: "+token);
                 console.log("The JWT for this session is: "+token);
                 //res.send("Login successful!!!");
             }
@@ -119,7 +119,7 @@ res.json(await everything.findSpecialData())
 
 
 
-userRoute.get('/superhero/Allheroes',verify,async (req,res)=>{
+userRoute.get('/superhero/Allheroes',async (req,res)=>{
 
     
 

@@ -1,26 +1,22 @@
-
+//importing important component
 import express from 'express';
 import {route} from '../routes/index'
 import {userRoute} from '../routes/users';
 import {adminRoute} from '../routes/admin';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
-
 dotenv.config();
-
-
-
 
 const app=express();
 
-//app.use(express.urlencoded({ extended: true }))
 
+//for parsing the json data from the user to the readable format
 app.use(bodyParser());
 
 
 
-
-//app.use('/heroes',route);
+//All the routing stuffs
+app.use('/',route);
 app.use('/user',userRoute);
 app.use('/admin',adminRoute);
 
