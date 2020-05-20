@@ -9,21 +9,29 @@ export async function findAllData(a:Number):Promise<Hero[]>{
     let client;
     try{
         client = await pool.connect();
-        if(a==0){
-        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id" );
+        
+        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100'" );
         let result=results.rows.map(convertToHeroArray);
         return result;
     }
-    else{
-        const results = await client.query("select hero_id,hero_super_name from heroes JOIN origins on heroes.origin=origins.origin_id" );
+
+
+    catch(err){
+        console.log(err);
+    }finally{
+        client && client.release();
+    }
+    return [];
+}
+
+export async function findSpecialData():Promise<Hero[]>{
+    let client;
+    try{
+        client = await pool.connect();
+       
+        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id>'100'" );
         let result=results.rows.map(convertToHeroArray);
         return result;
-    }
-       
-       
-       
-
-
 
     }catch(err){
         console.log(err);
@@ -40,7 +48,7 @@ export async function findDataByHero(url:any):Promise<Hero[]>{
         console.log(url);
         client = await pool.connect();
         console.log(url);
-        const results = await client.query(`select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_super_name ~*'${url}';`);
+        const results = await client.query(`select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100' AND hero_super_name ~*'${url}' ;`);
         console.log(url);
        let result=results.rows.map(convertToHeroArray);
        console.log(url);
@@ -61,7 +69,7 @@ export async function findDataById(url:any):Promise<Hero[]>{
     try{
         client = await pool.connect();
         
-        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id="+url );
+        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100' AND hero_id="+url );
         
        let result=results.rows.map(convertToHeroArray);
        
@@ -137,7 +145,7 @@ export async function findImageById(url:any):Promise<Hero[]>{
     try{
         client = await pool.connect();
         
-        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id="+url );
+        const results = await client.query("select * from heroes JOIN origins on heroes.origin=origins.origin_id where hero_id<'100' hero_id="+url );
         
        let result=results.rows.map(convertToHeroArray);
        

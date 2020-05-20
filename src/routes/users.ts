@@ -6,9 +6,6 @@ import {User} from '../model/user';
 import bcrypt from 'bcryptjs';
 import jwt, { TokenExpiredError } from 'jsonwebtoken';
 import {verify} from './tokenVerification';
-
-
-
 const app=express();
 
 
@@ -17,7 +14,7 @@ const app=express();
 userRoute.get('/',(req,res)=>{
     
    
-
+    console.log("Gettting to the user page successful.")
     res.send(`<h1>Welcome to Users Page!!</h1> 
                 You can Login In or Register From here
                 Just Go to user/login OR user/register to continue to page`);
@@ -40,6 +37,7 @@ try{
     let user:User= await everything.RegisterUser(new User(firstname,lastname,email,dateOfBirth,hashedPassword),res); 
 
     //res.status(201).json(user);
+    console.log("Registrarion Success!!")
     res.send("Registration Complete");
 }catch(err){
 
@@ -59,6 +57,7 @@ userRoute.post('/login',async (req,res)=>{
         let user:any=await everything.CheckUser(email,password); 
 
         if(!user[0]){
+    console.log("Invalid email. Sorry!!");
 res.send("Invalid email. Sorry!!");
         
         }else{
@@ -72,9 +71,12 @@ res.send("Invalid email. Sorry!!");
                 //creating token for successful login
                 const token= jwt.sign({email:user[0].email},accessedToken);
                 res.header('token',token).send(token);
+                console.log("The JWT for this session is: "+token);
                 //res.send("Login successful!!!");
             }
-            else{res.send("Invalid Password!! Try again!!");}
+            else{
+                console.log("Invalid Password!! Try again!!");
+                res.send("Invalid Password!! Try again!!");}
 
 
         }
@@ -102,10 +104,16 @@ res.send("Invalid email. Sorry!!");
 
 
 
-userRoute.get('/superhero/Specialheroes',verify,(req,res)=>{
+userRoute.get('/superhero/Specialheroes',verify,async (req,res)=>{
 
 
 
+ try{
+res.json(await everything.findSpecialData())
+    }
+    catch(err){
+        res.status(500).send(err.message);
+    }
 
 });
 
