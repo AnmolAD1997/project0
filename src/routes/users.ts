@@ -45,7 +45,7 @@ try{
 }
 });
 
-
+//this route is for the login purpose.
 userRoute.post('/login',async (req,res)=>{
 
     
@@ -70,9 +70,10 @@ res.send("Invalid email. Sorry!!");
                 let accessedToken:any=process.env.SECRET_TOKEN;
                 //creating token for successful login
                 const token= jwt.sign({email:user[0].email},accessedToken);
-                res.header('token',token).send("Login Successful!! Your access token is: "+token);
+                res.header('token',token).send(`Welcome ${user[0].firstname}  ${user[0].lastname}   
+                Login Successful!! Your access token is: ${token}`);
                 console.log("The JWT for this session is: "+token);
-                //res.send("Login successful!!!");
+                
             }
             else{
                 console.log("Invalid Password!! Try again!!");
