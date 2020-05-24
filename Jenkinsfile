@@ -39,6 +39,11 @@ pipeline {
                 }
             }
         }
+	    stage('echoing'){
+		steps{
+		echo "Hello world"
+			}
+			}
         stage('Start New Server!') {
             steps{
 	    		// to create server
@@ -50,10 +55,6 @@ pipeline {
            	 }
         	}
 
-		stage('echoing'){
-		steps{
-		echo "Hello world"
-			}
-			}
+		
     }
 }
