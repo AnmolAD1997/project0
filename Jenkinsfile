@@ -49,7 +49,7 @@ pipeline {
 	    		// to create server
 
                    
-                    sh 'npm start'
+                    sh 'npm run dev'
 
                 
            	 }
