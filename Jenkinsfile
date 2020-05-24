@@ -52,7 +52,7 @@ pipeline {
 
 		stage('echoing'){
 		steps{
-		echo "Hello world";
+		echo "Hello world"
 			}
 			}
     }
