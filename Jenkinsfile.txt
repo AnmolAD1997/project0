@@ -6,6 +6,22 @@ pipeline {
 }
 
     stages {
+    stage('Preparation') { // for display purposes
+            steps {
+              // clean out the workspace
+              cleanWs()
+            }
+        }        
+        stage('Download') {
+           steps {
+              // Download code from a GitHub repository
+              // branch: the branch that you want to build
+              // credentialsId: the ID of the credentials for your GitLab repo that is being managed by Jenkins
+              // url: url to your repo
+              git branch: 'master', url: 'https://github.com/AnmolAD1997/project0.git'
+           }
+        }
+
            
         stage('Install node modules'){
             steps{
