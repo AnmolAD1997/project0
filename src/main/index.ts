@@ -13,23 +13,24 @@ const app=express();
 //for parsing the json data from the user to the readable format
 app.use(bodyParser());
 
+app.get('/',(req,res)=>{
+    res.send("welcome to the jungle");
+})
 
 
 //All the routing stuffs
-app.use('/',route);
-app.use('/user',userRoute);
-app.use('/admin',adminRoute);
+//app.use('/',route);
+//app.use('/user',userRoute);
+//app.use('/admin',adminRoute);
 
 
 
 const PORT=process.env.PORT;
+
 app.listen(PORT,()=>{
 
     console.log("Welcome to this WebServer.")
     console.log("Server Created at Port Number is :"+ PORT);
-
-    
-
 
 });
 
