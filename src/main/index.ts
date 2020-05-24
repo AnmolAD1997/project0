@@ -13,15 +13,11 @@ const app=express();
 //for parsing the json data from the user to the readable format
 app.use(bodyParser());
 
-app.get('/',(req,res)=>{
-    res.send("welcome to the jungle");
-})
-
 
 //All the routing stuffs
-//app.use('/',route);
-//app.use('/user',userRoute);
-//app.use('/admin',adminRoute);
+app.use('/',route);
+app.use('/user',userRoute);
+app.use('/admin',adminRoute);
 
 
 
