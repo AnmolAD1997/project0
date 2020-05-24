@@ -31,7 +31,7 @@ pipeline {
                 script {
                     try {
                         // kill any running instances of the app if applicable
-                        sh 'kill $(lsof -t -i:5000)'
+                        sh 'kill $(lsof -t -i:3009)'
                     } catch (all) {
                         // if it fails that should mean a server wasn't already running
                         echo 'No server was already running'
