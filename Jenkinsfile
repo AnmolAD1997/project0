@@ -42,11 +42,10 @@ pipeline {
         stage('Start New Server!') {
             steps{
 	    		// to create server
-<<<<<<< HEAD:Jenkinsfile
-                    sh 'nodemon run dev'
-=======
+
+                   
                     sh 'npm run dev'
->>>>>>> 21dc7d52b0a7598236cbfd3e37a37638574a2f37:Jenkinsfile.txt
+
                 
            	 }
         	}
