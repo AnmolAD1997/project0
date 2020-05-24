@@ -44,19 +44,17 @@ pipeline {
             }
         }
         stage('Start New Server!') {
-            steps {
-                
-                    
-                   
+            steps{
+	    \\run this to create server.
                     sh 'npm run dev'
                 
-            }
-        }
+           	 }
+        	}
 
-stage('echoing'){
-steps{
+		stage('echoing'){
+		steps{
 		echo "Hello world";
-}
-}
+			}
+			}
     }
 }
