@@ -45,11 +45,11 @@ pipeline {
         }
         stage('Start New Server!') {
             steps {
-                script {
-                    // start the application server
+                
+                    
                    
                     sh 'npm run dev'
-                }
+                
             }
         }
 
