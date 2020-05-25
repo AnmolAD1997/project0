@@ -31,6 +31,7 @@
     "start": "nodemon src/main/index.js",
     "dev": "nodemon src/main/index.ts",
     "built": "tsc -p ."
+    
   },
   "author": "",
   "license": "ISC",
