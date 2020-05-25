@@ -39,5 +39,5 @@ Since the API is all ready to be consumed by other application, Further it can b
 in the future are:
 1.Better  use of dynamic images
 2.Implement it into a good looking frontend for better experience.
-3.More admin features can be implemented later like handling users and their behaviour.
+3.More admin features can be implemented later like handling users and their behaviour..
 
