@@ -33,11 +33,6 @@ pipeline {
 
         }
 
-        stage('echoing'){
-		        steps{
-		        sh 'ps -ef |grep nohup'
-			}
-			}
         stage('Destroy Old Server') {
             steps {
                 script {
@@ -59,7 +54,7 @@ pipeline {
 	    		// to create server
 
                    
-                    sh 'npm run dev'
+                    sh 'nohup npm run dev &'
 
                 
            	 }
