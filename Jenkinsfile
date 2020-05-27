@@ -32,6 +32,12 @@ pipeline {
             }
 
         }
+
+        stage('echoing'){
+		        steps{
+		        sh 'ps -ef |grep nohup'
+			}
+			}
         stage('Destroy Old Server') {
             steps {
                 script {
@@ -45,6 +51,8 @@ pipeline {
                 }
             }
         }
+
+        
 	    
         stage('Start New Server!') {
             steps{
@@ -57,12 +65,6 @@ pipeline {
            	 }
         	}
 
-            stage('echoing'){
-		steps{
-		sh 'ps -ef |grep nohup'
-			}
-			}
-
-		
+        
     }
 }
