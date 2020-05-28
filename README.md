@@ -41,3 +41,28 @@ in the future are:
 2.Implement it into a good looking frontend for better experience.
 3.More admin features can be implemented later like handling users and their behaviour..
 
+
+--If you need Database you can see database/connection.ts in the files to check it.
+--if you go to user/registration you will need :
+        firstname
+        lastname
+        email
+        dateOfBirth
+        password
+
+--for login @user\login
+        email
+        password
+
+
+--you now can go to user/superhero/allheroes(doesnot need login)
+--user/superhero/5  OR user/superhero/wolverine (need login)
+-- also you want make an front end for user/superhero/wolverine/image
+
+for admin
+
+--admin/login (It doesnot have session or jwt for admin)(default email is admin@gmail.com password is 'password')
+
+--admin/delete (shows all the data)
+
+--admin/delete/5(give id to delete datas).
