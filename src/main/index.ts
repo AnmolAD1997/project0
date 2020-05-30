@@ -13,6 +13,7 @@ const app=express();
 
 
 
+
 //for parsing the json data from the user to the readable format
 app.use(bodyParser());
 app.use(cors());
