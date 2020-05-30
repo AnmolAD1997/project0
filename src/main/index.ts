@@ -5,14 +5,17 @@ import {userRoute} from '../routes/users';
 import {adminRoute} from '../routes/admin';
 import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 const app=express();
 
 
+
+
 //for parsing the json data from the user to the readable format
 app.use(bodyParser());
-
+app.use(cors());
 
 //All the routing stuffs
 app.use('/',route);
