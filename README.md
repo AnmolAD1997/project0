@@ -1,5 +1,7 @@
 Infromation
 
+http://13.58.145.99:3009/ to get the basic information about the API(Hosted on Amazon web server.)
+
 The project is about the superhero API which gives informations about the superhero  in the comics universe. The API hold the superhero data and deisplaysthe data in JSON format.
 
 Use policy
@@ -30,7 +32,7 @@ Once the server Started( You can check console to check for any logs about start
 Now using the Postman the API can be accessed using the URL.
 
 Now use the url for following purposes:
-localhost:3001/to get the basic information about the API
+http://13.58.145.99:3009/ to get the basic information about the API
 
 
 Final Information
